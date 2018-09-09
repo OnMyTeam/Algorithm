@@ -1,2 +1,0 @@
-# Algorithm
-[Baekjoon Online Judge] 
