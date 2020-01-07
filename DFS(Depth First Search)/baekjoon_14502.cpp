@@ -54,15 +54,18 @@ int main()
     for(int i=0; i<row; i++){
         for(int j=0; j<column; j++){
             nodeNum[i][j] = index;
+            cout << nodeNum[i][j] <<" ";
             index++;
             
         }
-
+        cout << endl;
     }
     index = 0;
     for(int i=0; i<row; i++){
         for(int j=0; j<column; j++){
+            cout << index << endl;
             if(matrix[i][j] == 1){
+                index++;
                 continue;
             }
 
@@ -85,6 +88,7 @@ int main()
                 }
             }
             else if(index % column == column - 1){
+                cout << "???" << endl;
                 if(matrix[i+column][j] == 0){
                     fromEdge = nodeNum[i][j];
                     toEdge = nodeNum[i+column][j];
@@ -92,19 +96,22 @@ int main()
                 }
             }
             else {
-                if(matrix[i][j+1] == 0){
+                cout << "111" << endl;
+                if(matrix[i][j+1] == 0 || matrix[i][j+1] == 2){
                     fromEdge = nodeNum[i][j];
                     toEdge = nodeNum[i][j+1];
+                    graph[fromEdge][toEdge] = 1;
+                    graph[toEdge][fromEdge] = 1;                      
 
                 }
-                if(matrix[i+column][j] == 0){
+                if(matrix[i+column][j] == 0 || matrix[i+column][j] == 2){
                     fromEdge = nodeNum[i][j];
                     toEdge = nodeNum[i+column][j];
-
+                    graph[fromEdge][toEdge] = 1;
+                    graph[toEdge][fromEdge] = 1;  
                 }             
             }
-            graph[fromEdge][toEdge] = 1;
-            graph[toEdge][fromEdge] = 1;                
+              
             index++;
         }
 
