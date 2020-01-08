@@ -21,48 +21,11 @@ vector< vector<int> > DFS(int detectNum, vector< vector<int> > graph, vector< ve
         }
     }
 
-    cout << endl;
+    // cout << endl;
     return matrix;
 
 }
-void Wall(vector< vector<int> > matrix, int count, int row, int column){
-    // 몫, 나머지
-          
 
-    if(count == 3){
-        for(int i=0; i<row; i++){
-            for(int j=0; j<column; j++){
-
-                cout << matrix[i][j] << " ";
-
-                
-            }
-            cout << endl;
-        }
-        cout << endl;
-
-        
-        return;
-    }
-    for(int i=0; i < row; i++){
-        for(int j=0; j< column; j++){
-            if(matrix[i][j] == 1 || matrix[i][j] == 2){
-                continue;
-            }            
-
-            matrix[i][j] = 1;
-            
-            // cout << "detectNum : " << detectNum << "count : " << count << endl;
-            Wall(matrix, count+1, row, column);
-
-            matrix[i][j] = 0;
-            
-        }
-        
-    }    
-    
-
-}
 vector< vector<int> > makeGraph(int row, int column, vector< vector<int> > graph, vector< vector<int> > matrix, vector< vector<int> > nodeNum){
     int index=0, fromEdge, toEdge;
     for(int i=0; i<row; i++){
@@ -145,6 +108,78 @@ vector< vector<int> > makeGraph(int row, int column, vector< vector<int> > graph
     return graph;
 }
 
+int Wall(vector< vector<int> > matrix, int count, int row, int column, vector< vector<int> > graph, vector< vector<int> > nodeNum, int max){
+    // 몫, 나머지
+          
+
+    if(count == 3){
+        // for(int i=0; i<row; i++){
+        //     for(int j=0; j<column; j++){
+
+        //         cout << matrix[i][j] << " ";
+
+                
+        //     }
+        //     cout << endl;
+        // }
+        // cout << endl;
+        vector< vector<int> > nMatrix(row * column);
+        int nMax = 0;
+        nMatrix = matrix;
+        bool visited[row * column];
+        for(int i=0; i<row * column; i++){
+            visited[i] = false;
+        }
+        graph = makeGraph(row, column, graph, matrix, nodeNum);
+        for(int i=0; i<row; i++){
+            for(int j=0; j<column; j++){
+                if(matrix[i][j] == 2){
+                    int detectNum = nodeNum[i][j];
+                    // cout << "시작번호 : " << detectNum << endl;
+                    nMatrix = DFS(detectNum, graph, nMatrix, visited);
+                    // for(int i=0; i<row; i++){
+                    //     for(int j=0; j<column; j++){
+
+                    //         cout << nMatrix[i][j] <<" ";
+
+                            
+                    //     }
+                    //     cout << endl;
+                    // }
+                    
+                }
+            }   
+        }
+
+        for(int i=0; i<row; i++){
+            for(int j=0; j<column; j++){
+                if(nMatrix[i][j] == 0){
+                    nMax++;
+                }
+            }
+
+        }
+        if (nMax > max){
+            max = nMax;
+            cout << " 안전구역 개수 : " <<  max << endl;
+        }
+        return max;
+    }
+    for(int i=0; i < row; i++){
+        for(int j=0; j< column; j++){
+            if(matrix[i][j] == 1 || matrix[i][j] == 2){
+                continue;
+            }            
+            matrix[i][j] = 1;
+            max = Wall(matrix, count+1, row, column, graph , nodeNum, max);
+            matrix[i][j] = 0;
+            
+        }
+        
+    }    
+
+}
+
 
 
 
@@ -153,18 +188,36 @@ vector< vector<int> > makeGraph(int row, int column, vector< vector<int> > graph
 int main()
 {
     int row, column, index, fromEdge, toEdge;
-    row = 4;
-    column = 6;
+    row = 7;
+    column = 7;
     index = 0;
     bool visited[row * column];
+    int max = -1;
     // int nodeNum[row][column];
     vector< vector<int> > nodeNum(row * column);
     vector< vector<int> > graph(row * column);
     vector< vector<int> > matrix({
-        vector<int>({0, 0, 0, 0, 0, 0}),
-        vector<int>({1, 0, 0, 0, 0, 2}),
-        vector<int>({1, 1, 1, 0, 0, 2}),
-        vector<int>({0, 0, 0, 0, 0, 2}),
+        // vector<int>({0, 0, 0, 0, 0, 0}),
+        // vector<int>({1, 0, 0, 0, 0, 2}),
+        // vector<int>({1, 1, 1, 0, 0, 2}),
+        // vector<int>({0, 0, 0, 0, 0, 2}),
+
+        vector<int>({2, 0, 0, 0, 1, 1, 0}),
+        vector<int>({0, 0, 1, 0, 1, 2, 0}),
+        vector<int>({0, 1, 1, 0, 1, 0, 0}),
+        vector<int>({0, 1, 0, 0, 0, 0, 0}),
+        vector<int>({0, 0, 0, 0, 0, 1, 1}),
+        vector<int>({0, 1, 0, 0, 0, 0, 0}),
+        vector<int>({0, 1, 0, 0, 0, 0, 0}),
+
+        // vector<int>({2, 0, 0, 0, 1, 1, 0}),
+        // vector<int>({0, 0, 1, 0, 1, 2, 0}),
+        // vector<int>({0, 1, 1, 0, 1, 0, 0}),
+        // vector<int>({0, 1, 0, 0, 0, 0, 0}),
+        // vector<int>({0, 0, 0, 0, 0, 1, 1}),
+        // vector<int>({0, 1, 0, 0, 0, 0, 0}),
+        // vector<int>({0, 1, 0, 0, 0, 0, 0}),        
+        
     });
     vector< vector<int> > nMatrix(row * column);
     vector< vector<int> > tmpMatrix(row * column);
@@ -202,15 +255,15 @@ int main()
         for(int j=0; j<column; j++){
             // nodeNum[i][j] = index;
             nodeNum[i].push_back(index);
-            cout << nodeNum[i][j] <<" ";
+            // cout << nodeNum[i][j] <<" ";
             index++;
             
         }
-        cout << endl;
+        // cout << endl;
     }
     // graph 생성
 
-    graph = makeGraph(row, column, graph, matrix, nodeNum);
+    // graph = makeGraph(row, column, graph, matrix, nodeNum);
     for(int i=0; i < row; i++){
         for(int j=0; j< column; j++){
             if(matrix[i][j] == 1 || matrix[i][j] == 2){
@@ -218,9 +271,10 @@ int main()
             }
 
             matrix[i][j] = 1;
-
-            Wall(matrix, 1, row, column);
+            max = Wall(matrix, 1, row, column, graph, nodeNum, max);
             matrix[i][j] = 0;
+
+
 
         }
         
@@ -228,25 +282,25 @@ int main()
     
     
      
-    for(int i=0; i<row; i++){
-        for(int j=0; j<column; j++){
-            if(matrix[i][j] == 2){
-                int detectNum = nodeNum[i][j];
-                cout << "시작번호 : " << detectNum << endl;
-                nMatrix = DFS(detectNum, graph, nMatrix, visited);
-                for(int i=0; i<4; i++){
-                    for(int j=0; j<6; j++){
+    // for(int i=0; i<row; i++){
+    //     for(int j=0; j<column; j++){
+    //         if(matrix[i][j] == 2){
+    //             int detectNum = nodeNum[i][j];
+    //             cout << "시작번호 : " << detectNum << endl;
+    //             nMatrix = DFS(detectNum, graph, nMatrix, visited);
+    //             for(int i=0; i<4; i++){
+    //                 for(int j=0; j<6; j++){
 
-                        cout << nMatrix[i][j] <<" ";
+    //                     cout << nMatrix[i][j] <<" ";
 
                         
-                    }
-                    cout << endl;
-                }
+    //                 }
+    //                 cout << endl;
+    //             }
                 
-            }
-        }   
-    }
+    //         }
+    //     }   
+    // }
  
     return 0;
 }
