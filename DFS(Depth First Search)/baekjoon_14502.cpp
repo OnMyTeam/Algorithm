@@ -12,15 +12,6 @@ vector< vector<int> > DFS(int row, int col, int detectNum, vector< vector<int> >
     ry = detectNum % matrix[0].size();
     matrix[rx][ry] = 2;
 
-    // for(int i=0; i<graph[detectNum].size(); i++){
-    //     if(graph[detectNum][i] == 1 && visited[i] == false){
-         
-    //         matrix = DFS(i, graph, matrix, visited);
-    //     }
-    // }
-
-    // cout << endl;
-
     for(int i=0; i<4; i++){
         int x, y;
         int tx, ty;
@@ -50,8 +41,7 @@ vector< vector<int> > DFS(int row, int col, int detectNum, vector< vector<int> >
             continue;
         if(matrix[x][y] == 0){
             int detectNum1 = nodeNum[x][y];
-            // cout << detectNum << " -> " << detectNum1 << endl;
-            matrix = DFS(row, col, detectNum1, matrix, nodeNum);
+             matrix = DFS(row, col, detectNum1, matrix, nodeNum);
         }
     }    
     return matrix;
@@ -69,7 +59,6 @@ int Wall(vector< vector<int> > matrix, int count, int row, int col, vector< vect
         for(int i=0; i<row * col; i++){
             visited[i] = false;
         }
-        // graph = makeGraph(row, col, graph, matrix, nodeNum);
         for(int i=0; i<row; i++){
             for(int j=0; j<col; j++){
                 if(matrix[i][j] == 2){
