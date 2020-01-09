@@ -106,7 +106,7 @@ int main()
     index = 0;
     bool visited[row * col];
     int max = -1;
-    // int nodeNum[row][col];
+    // int nodeNum[row][col]; 
     vector< vector<int> > nodeNum(row * col);
     vector< vector<int> > graph(row * col);
     vector< vector<int> > matrix({
