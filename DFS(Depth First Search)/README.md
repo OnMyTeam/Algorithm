@@ -14,5 +14,5 @@
 ![](./picture1.jpg)
 
 
-1. <a href="https://www.acmicpc.net/problem/14502">[문제 바로가기]</a> baekjoon_14502.cpp 
-2. <a href="https://www.acmicpc.net/problem/2606">[문제 바로가기]</a> baekjoon_2606.cpp 
+1. <a href="https://www.acmicpc.net/problem/14502" target="_blank">[문제 바로가기]</a> baekjoon_14502.cpp 
+2. <a href="https://www.acmicpc.net/problem/2606" target="_blank">[문제 바로가기]</a> baekjoon_2606.cpp 
