@@ -1,7 +1,18 @@
 # Algorithm
-[Baekjoon Online Judge] 
-* DP(Dynamic Programing)
-* DFS(Depth Fist Search)
-* BFS(Breadth First Search)
+### 1. ±íÀÌ ¿ì¼± Å½»ö(DFS) Á¤ÀÇ<br>
+* ¾î¶² Á¤Á¡°ú ¿¬°áµÈ ´Ù¸¥ Á¤Á¡À¸·Î ÆÄ°í µé¾î Å½»öÇÏ´Â ¹æ¹ý<br>
+* ·çÆ® ³ëµå¿¡¼­ ½ÃÀÛÇÏ¿© ´ÙÀ½ ºÐ±â·Î ³Ñ¾î°¡±âÀü ÇØ´ç ºÐ±â¸¦ Å½»öÇÏ´Â ¹æ¹ý<br>
+* ¾î¶² Á¤Á¡¿¡¼­ ½ÃÀÛÇÏ¿© ¿¬°áµÈ ´Ù¸¥ Á¤Á¡À» °è¼Ó ÆÄ°í µé¾î°¡ Å½»ö ÇÑ ÈÄ, <br>¿¬°áµÈ Á¤Á¡ÀÌ ¾øÀ¸¸é ´Ù½Ã µ¹¾Æ¿Í ´Ù¸¥ ¿¬°áµÈ Á¤Á¡À» ÆÄ°í µé¾î ¸ðµç Á¤Á¡¸¦ Å½»öÇÏ´Â ¹æ¹ý<br>
 
-[ìžë£Œêµ¬ ë° ì•Œê³ ë¦¬ì¦˜ ê¸°ë³¸]
+### 2. ±íÀÌ ¿ì¼± Å½»ö(DFS)ÀÇ Æ¯Â¡
+* ½ºÅÃ(Stack)°ú ±×·¡ÇÁ(Graph) ÀÚ·á±¸Á¶¸¦ »ç¿ëÇÔ.<br>
+&nbsp;&nbsp;&nbsp; - ±×·¡ÇÁ(Graph) : ³ëµå(N, node)¿Í ±× ³ëµå¸¦ ¿¬°áÇÏ´Â °£¼±(E, edge)¸¦ ÇÏ³ª·Î ¸ð¾Æ ³õÀº ÀÚ·á±¸Á¶<br>
+&nbsp;&nbsp;&nbsp; - ½ºÅÃ(Stack) : LIFO(Last In First Out)Çü½ÄÀÇ ÀÚ·á ±¸Á¶. °¡Àå ÃÖ±Ù¿¡ ½ºÅÃ¿¡ Ãß°¡ÇÑ Ç×¸ñÀÌ °¡Àå ¸ÕÀú ³ª¿È. <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;±íÀÌ ¿ì¼± Å½»ö(DFS)¿¡¼­´Â Á¤Á¡¿¡ ¿¬°áµÈ ¹æ¹®ÇÒ Á¤Á¡µéÀ» ½ºÅÃ¿¡ ½×¾Æ µÎ¾î, ¿ì¼± ¼øÀ§´ë·Î ¹æ¹®ÇÏ±â À§ÇØ ¾¸<br>
+* °¢ Á¤Á¡ÀÇ ÀÎÁ¢°ü°è¸¦ ³ªÅ¸³»±â À§ÇØ ÀÎÁ¢¸®½ºÆ®(Adjacency List), ÀÎÁ¢Çà·Ä(Adjacency Matrix)·Î Ç¥ÇöÇÔ
+
+![](./picture1.jpg)
+
+
+1. <a href="https://www.acmicpc.net/problem/14502" target="_blank">[¹®Á¦ ¹Ù·Î°¡±â]</a> baekjoon_14502.cpp 
+2. <a href="https://www.acmicpc.net/problem/2606" target="_blank">[¹®Á¦ ¹Ù·Î°¡±â]</a> baekjoon_2606.cpp 
