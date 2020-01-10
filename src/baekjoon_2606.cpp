@@ -20,7 +20,7 @@ int DFS(int start, vector<vector<int>> graph, bool visited[], int count){
         }
     }
     return count;
-}
+} 
 // 초기화
 vector< vector<int> > init(bool visited[], vector< vector<int> >graph, int comSize){
         // visited 배열 false로 초기화
