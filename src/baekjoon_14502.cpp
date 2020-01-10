@@ -11,7 +11,7 @@ vector< vector<int> > DFS(int row, int col, int detectNum, vector< vector<int> >
     rx = detectNum / matrix[0].size();
     ry = detectNum % matrix[0].size();
     matrix[rx][ry] = 2;
- 
+  
     for(int i=0; i<4; i++){
         int x, y;
         int tx, ty;
