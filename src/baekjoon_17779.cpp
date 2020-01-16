@@ -16,7 +16,7 @@ void makeArea(int r, int c){
             if(r < (r + d1 + d2) && (r + d1 + d2) <= N && (c - d1) < c && c < (c + d2) && (c + d2) <= N ){
                 cout << "d1: " << d1 << " d2 :" << d2 << endl;
                 cout << "r: " << r << " c :" << c << endl;
-   
+                
                 //5번 선거구
                 for(int i=0; i<=d1; i++){
                     int x1,y1,x2,y2;
@@ -43,7 +43,7 @@ void makeArea(int r, int c){
                     area[x1][y1] = 5;
                     area[x2][y2] = 5;      
                 }
-/
+
 
 
 
