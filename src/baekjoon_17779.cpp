@@ -7,15 +7,16 @@ int N;
 vector<int> *people;
 vector<int> *area;
 void makeArea(int r, int c){
-    for(int d1=1; d1 <= 1; d1++){
-        for(int d2=1; d2 <= 1; d2++){
+    for(int d1=1; d1 <= 2; d1++){
+        for(int d2=1; d2 <= 2; d2++){
             // if(d1 > (N-r-d2) || d2 > N-d2){
             //     continue;
             // }
             int sum1=0, sum2=0, sum3=0, sum4=0, sum5=0;            
             if(r < (r + d1 + d2) && (r + d1 + d2) <= N && (c - d1) < c && c < (c + d2) && (c + d2) <= N ){
                 cout << "d1: " << d1 << " d2 :" << d2 << endl;
-                cout << "r: " << r << " c :" << c << endl;                
+                cout << "r: " << r << " c :" << c << endl;
+   
                 //5번 선거구
                 for(int i=0; i<=d1; i++){
                     int x1,y1,x2,y2;
@@ -42,6 +43,10 @@ void makeArea(int r, int c){
                     area[x1][y1] = 5;
                     area[x2][y2] = 5;      
                 }
+/
+
+
+
                 
                 for(int i=0; i<N; i++){
                     for(int j=0; j<N; j++){
@@ -50,19 +55,19 @@ void makeArea(int r, int c){
                         } 
                         else if(i < r + d1 && j <= c){
                             area[i][j] = 1;
-                            sum1 = sum1 + people[i][j];
+                            // sum1 = sum1 + people[i][j];
                         }
                         else if(i <= r + d2 && c < j && j <N){
                             area[i][j] = 2;
-                            sum2 = sum2 + people[i][j];
+                            // sum2 = sum2 + people[i][j];
                         }
                         else if(i >= r + d1 && i < N && j < c - d1+d2){
                             area[i][j] = 3;
-                            sum3 = sum3 + people[i][j];
+                            // sum3 = sum3 + people[i][j];
                         }
                         else if(i > r + d2 && i <= N && c - d1+d2 <= j){
                             area[i][j] = 4;
-                            sum4 = sum4 + people[i][j];
+                            // sum4 = sum4 + people[i][j];
                         }
                         
                         
@@ -107,7 +112,7 @@ void makeArea(int r, int c){
 }
 int main(){
     // cin >> N;
-    N = 6;
+    N = 7;
     people = new vector<int>[N];
     area = new vector<int>[N];
     people[0] = {1, 2, 3, 4, 1, 6};
@@ -126,6 +131,6 @@ int main(){
     //         makeArea(r, c);                  
     //     }
     // }
-    makeArea(2, 2);
+    makeArea(1, 3);
     return 0;
 }
