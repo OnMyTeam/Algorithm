@@ -19,3 +19,5 @@
 2. <a href="https://www.acmicpc.net/problem/2606" target="_blank">[문제 바로가기]</a> baekjoon_2606.cpp 
 2. <a href="https://www.acmicpc.net/problem/9663" target="_blank">[문제 바로가기]</a> backtracking_example.cpp
 2. <a href="https://www.acmicpc.net/problem/17779" target="_blank">[문제 바로가기]</a> baekjoon_17779.cpp
+2. <a href="https://www.acmicpc.net/problem/2748" target="_blank">[문제 바로가기]</a> baekjoon_2748.cpp
+2. <a href="https://www.acmicpc.net/problem/1003" target="_blank">[문제 바로가기]</a> baekjoon_1003.cpp
