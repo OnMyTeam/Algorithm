@@ -4,7 +4,7 @@
 using namespace std;
 int N;
 int cnt = 0;
- 
+int *cols;
 
 bool possible(int level){
     for(int i=0; i < level; i++){
@@ -30,6 +30,7 @@ void queens(int level){
 
 int main(){
     N = 4;
+    cols = new int[N];
     vector<int> matrix[4];
 
     for(int i=0; i<N; i++){
