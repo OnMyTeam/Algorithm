@@ -18,8 +18,8 @@ int fibonacci(int n){
 	if(arrValue[n] !=0){
 		return arrValue[n];
 	}
-	sum = fibonacci(n - 1) + fibonacci(n -2) ;
-	arrValue[n] = sum % 15746;
+	sum = (fibonacci(n - 1) + fibonacci(n -2)) % 15746;
+	arrValue[n] = sum;
 	return sum;
 }
 int main(){
