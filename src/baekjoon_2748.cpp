@@ -3,9 +3,9 @@
 
 using namespace std;
 
-int sum = 0;
-int *arrValue;
-int fibonacci(int n){
+long long sum = 0;
+long long *arrValue;
+long long fibonacci(int n){
 	if(n == 0){
 		arrValue[n] = 0;
 		return 0;
@@ -18,17 +18,18 @@ int fibonacci(int n){
 		return arrValue[n];
 	}
 	sum = fibonacci(n - 1) + fibonacci(n - 2);
+	cout << sum << endl;
 	arrValue[n] = sum;
 	return arrValue[n];
 }
 int main(){
 	
-	int N = 50;	
-	arrValue = new int[N + 1];
+	int N = 90;	
+	arrValue = new long long[N + 1];
 	for(int i=0; i<=N; i++){
 		arrValue[i] = 0;
 	}
-	int result = fibonacci(N);
+	long long result = fibonacci(N);
 	cout << result << endl;
 
 	return 0;
