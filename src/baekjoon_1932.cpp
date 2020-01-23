@@ -20,13 +20,15 @@ int jaegwi(int idx, int v, int sum){
         cout << sum << endl;
     }
 
-    sum = triangle[idx][i];   
-    jaegwi(idx + 1, i, sum);
+    for(int i=v; i<=idx; i++){
+        sum = triangle[idx][i];   
+        jaegwi(idx + 1, i, sum);
+    }
 
 	return sum;
 }
 int main(){
-	
+	 
 
 	int result = jaegwi(0, 0, sum);
     cout << result << endl;
