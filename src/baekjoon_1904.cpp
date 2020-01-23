@@ -3,12 +3,12 @@
 
 using namespace std;
 
-int sum = 0;
-int *arrValue;
-int fibonacci(int n){
+long long sum = 0;
+long long *arrValue;
+long long fibonacci(long long n){
+	cout << n << endl;
 	if(n == 1){
 		arrValue[n] = 1;
-		
 		return 1;
 	}
 	if(n == 2){
@@ -23,14 +23,14 @@ int fibonacci(int n){
 	return sum;
 }
 int main(){
-	int N = 1000000;
-	arrValue = new int[N + 1];
+	long long N = 10;
+	arrValue = new long long[N + 1];
 
 	for(int i=0; i<=N; i++){
 		arrValue[i] = 0;
 	}
 	
-	int result = fibonacci(N % 15746);
+	long long result = fibonacci(N);
 	cout << result << endl;
 	
 
