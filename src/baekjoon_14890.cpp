@@ -32,7 +32,7 @@ vector< vector<int> > matrix({
 int main(){
     int cnt = 0;
     
-	N = 6, L = 3;
+	N = 6, L = 2;
     visited = new vector<int>[N];
     for(int i=0; i<N; i++){
         visited[i].assign(N,0);
@@ -56,6 +56,10 @@ int main(){
                     // 전칸 번호가 다음칸 번호보다 클때
                     if(matrix[j][i] > matrix[j+1][i]){
                         if(L == 1){
+                            if(visited[j+1][i] == 1){
+                                // cout << " 11 " << endl;
+                                suc = false;
+                            }                                
                             visited[j+1][i] = 1;
                         }
                         else{
@@ -95,7 +99,11 @@ int main(){
                     // 전칸 번호가 다음칸 번호보다 작을때
                     if(matrix[j][i] < matrix[j+1][i]){
                         if(L == 1){
-                             visited[j][i] = 1;
+                            if(visited[j][i] == 1){
+                                // cout << " 11 " << endl;
+                                suc = false;
+                            }                              
+                            visited[j][i] = 1;
                         }else{
                             int Llength = 1;
                             for(int k=j; k>=0; k--){
@@ -181,6 +189,10 @@ int main(){
                     // 전칸 번호가 다음칸 번호보다 클때
                     if(matrix[i][j] > matrix[i][j+1]){
                         if(L == 1){
+                            if(visited[i][j+1] == 1){
+                                // cout << " 11 " << endl;
+                                suc = false;
+                            }                                
                             visited[i][j+1] = 1;
                         }else{
                             // 경사 길이가 최소 L이상인지 확인
@@ -202,7 +214,7 @@ int main(){
 
                                 if(Llength == L){
                                     // cout << " 33 " << endl;
-                                    for(int z=j+1; z<N; z++){
+                                    for(int z=j+1; z<k+L; z++){
                                         visited[i][z] = 1;
                                     }                             
                                     break;
@@ -220,13 +232,17 @@ int main(){
                     if(matrix[i][j] < matrix[i][j+1]){
                          
                         if(L == 1){
+                            if(visited[i][j] == 1){
+                                // cout << " 11 " << endl;
+                                suc = false;
+                            }                            
                             visited[i][j] = 1;
                         }
                         else{
                             int Llength = 1;
                             for(int k=j; k>=0; k--){
                                 // cout << k << " , " << k-1 << endl;
-                                if(k == 0 || visited[i][k - (L - 1)] == 1){
+                                if(k == 0 || visited[i][k - 1] == 1){
                                     // cout << " 11 " << endl;
                                     continue;
                                 }
