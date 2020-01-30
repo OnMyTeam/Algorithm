@@ -36,7 +36,7 @@ int main(){
         if(i == 0){
             max = matrix[i][1];
             cV = matrix[i][1];
-        }
+        } 
         else if(i > 0 && i < 3){
             cV = cV - matrix[i][0] + matrix[i][1];
             
