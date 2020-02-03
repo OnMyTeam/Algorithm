@@ -23,7 +23,7 @@ long long fibonacci(long long n){
 	return sum;
 }
 int main(){
-	long long N = 10;
+	long long N = 1000000;
 	arrValue = new long long[N + 1];
 
 	for(int i=0; i<=N; i++){
@@ -35,4 +35,4 @@ int main(){
 	
 
 	return 0;
-}
+} 
