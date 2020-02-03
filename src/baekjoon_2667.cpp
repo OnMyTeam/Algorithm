@@ -41,7 +41,7 @@ void DFS(int x, int y, int num){
 		}
 		else if(matrix[nx][ny] == 0 || matrix[nx][ny] == num){
 			continue;
-		}
+		} 
 
 		DFS(nx, ny, num);
 	}
