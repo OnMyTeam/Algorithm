@@ -41,8 +41,11 @@ void BFS(){
 		}
 		for(int i=0; i<nhanoiTop.size(); i++){
 			for(int j=nhanoiTop[i].size() - 1; j <= nhanoiTop[i].size() - 1; j++){
-				
+				// cout << i << ", " << j << endl;
 				if(i == 0){
+					if(nhanoiTop[i].size() == 0){
+						continue;
+					}
 					if(nhanoiTop[i][j] < nhanoiTop[i+1][nhanoiTop[i+1].size() - 1]){
 
 						q.push({nhanoiTop, i, i+1});
@@ -52,6 +55,9 @@ void BFS(){
 						q.push({nhanoiTop, i, i+2});
 					}	
 				}else if(i == 1){
+					if(nhanoiTop[i].size() == 0){
+						continue;
+					}
 					if(nhanoiTop[i][j] < nhanoiTop[i-1][nhanoiTop[i-1].size() - 1]){
 
 						q.push({nhanoiTop, i, i-1});
@@ -61,6 +67,9 @@ void BFS(){
 						q.push({nhanoiTop, i, i+1});
 					}	
 				}else{
+					if(nhanoiTop[i].size() == 0){
+						continue;
+					}					
 					if(nhanoiTop[i][j] < nhanoiTop[i-2][nhanoiTop[i-2].size() - 1]){
 
 						q.push({nhanoiTop, i, i-2});
