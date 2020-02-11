@@ -7,12 +7,13 @@ struct hanoi {
 	vector<vector<int>> hanoitop;
 	int beforesticknum;
 	int aftersticknum;
+	int cnt;
 };
 vector< vector<int> > hanoiTop({
     
     vector<int>({2, 1}),
-    vector<int>({3}),
-    vector<int>({7, 6, 5, 4}),
+    vector<int>({4, 3}),
+    vector<int>({7, 6, 5}),
     
 });
 queue<hanoi> q;
@@ -25,6 +26,7 @@ void BFS(){
 		int nbeforesticknum = q.front().beforesticknum;
 		int naftersticknum = q.front().aftersticknum;
 		int diskNum = nhanoiTop[nbeforesticknum].back();
+		// cout << nbeforesticknum << ", " << naftersticknum << ", " << diskNum << endl;
 		q.pop();
 
 
@@ -32,60 +34,59 @@ void BFS(){
 		nhanoiTop[naftersticknum].push_back(diskNum);
 
 
-		for(int i=0; i<nhanoiTop.size(); i++){
-			for(int j=0; j<nhanoiTop[i].size(); j++){
-				cout << nhanoiTop[i][j] << " ";
-			}
-			cout << endl;
-		}
-		cout << endl;
+		// for(int i=0; i<nhanoiTop.size(); i++){
+		// 	for(int j=0; j<nhanoiTop[i].size(); j++){
+		// 		cout << nhanoiTop[i][j] << " ";
+		// 	}
+		// 	cout << endl;
+		// }
+		// cout << endl;
 
 
 		if(nhanoiTop[0].size() == 7 || nhanoiTop[1].size() == 7 || nhanoiTop[2].size() == 7){
+			for(int i=0; i<nhanoiTop.size(); i++){
+				for(int j=0; j<nhanoiTop[i].size(); j++){
+					cout << nhanoiTop[i][j] << " ";
+				}
+				cout << endl;
+			}
+			cout << endl;			
 			cout << "end!!" << endl;
 			return;
 		}
 		for(int i=0; i<nhanoiTop.size(); i++){
-			for(int j=nhanoiTop[i].size() - 1; j <= nhanoiTop[i].size() - 1; j++){
+	
 				// cout << i << ", " << j << endl;
-				if(nhanoiTop[i].empty()){
-					continue;
-				}
-				if(i == 0){
-
-					if(nhanoiTop[i][j] < nhanoiTop[i+1][nhanoiTop[i+1].size() - 1]){
-
+				
+	
+				if(i == 0 && nhanoiTop[i].size() != 0){
+					
+					if(nhanoiTop[i+1].size() == 0 || nhanoiTop[i][nhanoiTop[i].size() - 1] < nhanoiTop[i+1][nhanoiTop[i+1].size() - 1] ){
 						q.push({nhanoiTop, i, i+1});
 					}
-					if(nhanoiTop[i][j] < nhanoiTop[i+2][nhanoiTop[i+2].size() - 1]){
-
+					if(nhanoiTop[i+2].size() == 0 || nhanoiTop[i][nhanoiTop[i].size() - 1] < nhanoiTop[i+2][nhanoiTop[i+2].size() - 1]){
 						q.push({nhanoiTop, i, i+2});
 					}	
-				}else if(i == 1){
+				}else if(i == 1 && nhanoiTop[i].size() != 0){
 
-		
-					if(nhanoiTop[i][j] < nhanoiTop[i-1][nhanoiTop[i-1].size() - 1]){
-
+					// cout << " i == 1 " << endl;
+					if(nhanoiTop[i-1].size() == 0 || nhanoiTop[i][nhanoiTop[i].size() - 1] < nhanoiTop[i-1][nhanoiTop[i-1].size() - 1]){
 						q.push({nhanoiTop, i, i-1});
 					}
-					if(nhanoiTop[i][j] < nhanoiTop[i+1][nhanoiTop[i+1].size() - 1]){
-
+					if(nhanoiTop[i+1].size() == 0 || nhanoiTop[i][nhanoiTop[i].size() - 1] < nhanoiTop[i+1][nhanoiTop[i+1].size() - 1]){
 						q.push({nhanoiTop, i, i+1});
 					}	
-				}else{
+				}else if(i == 2 && nhanoiTop[i].size() != 0){
 				
-					if(nhanoiTop[i][j] < nhanoiTop[i-2][nhanoiTop[i-2].size() - 1]){
-
+					if(nhanoiTop[i-2].size() == 0 || nhanoiTop[i][nhanoiTop[i].size() - 1] < nhanoiTop[i-2][nhanoiTop[i-2].size() - 1]){
 						q.push({nhanoiTop, i, i-2});
 					}
-					if(nhanoiTop[i][j] < nhanoiTop[i-1][nhanoiTop[i-1].size() - 1]){
-
+					if(nhanoiTop[i-1].size() == 0 || nhanoiTop[i][nhanoiTop[i].size() - 1] < nhanoiTop[i-1][nhanoiTop[i-1].size() - 1]){
 						q.push({nhanoiTop, i, i-1});
 					}
 				}
-			}
+		
 		}
-
 
 
 		
