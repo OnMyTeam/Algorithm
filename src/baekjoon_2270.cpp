@@ -26,8 +26,12 @@ void BFS(){
 		int naftersticknum = q.front().aftersticknum;
 		int diskNum = nhanoiTop[nbeforesticknum].back();
 		q.pop();
+
+
 		nhanoiTop[nbeforesticknum].pop_back();
 		nhanoiTop[naftersticknum].push_back(diskNum);
+
+
 		for(int i=0; i<nhanoiTop.size(); i++){
 			for(int j=0; j<nhanoiTop[i].size(); j++){
 				cout << nhanoiTop[i][j] << " ";
@@ -35,6 +39,8 @@ void BFS(){
 			cout << endl;
 		}
 		cout << endl;
+
+
 		if(nhanoiTop[0].size() == 7 || nhanoiTop[1].size() == 7 || nhanoiTop[2].size() == 7){
 			cout << "end!!" << endl;
 			return;
@@ -42,10 +48,11 @@ void BFS(){
 		for(int i=0; i<nhanoiTop.size(); i++){
 			for(int j=nhanoiTop[i].size() - 1; j <= nhanoiTop[i].size() - 1; j++){
 				// cout << i << ", " << j << endl;
+				if(nhanoiTop[i].empty()){
+					continue;
+				}
 				if(i == 0){
-					if(nhanoiTop[i].size() == 0){
-						continue;
-					}
+
 					if(nhanoiTop[i][j] < nhanoiTop[i+1][nhanoiTop[i+1].size() - 1]){
 
 						q.push({nhanoiTop, i, i+1});
@@ -55,9 +62,8 @@ void BFS(){
 						q.push({nhanoiTop, i, i+2});
 					}	
 				}else if(i == 1){
-					if(nhanoiTop[i].size() == 0){
-						continue;
-					}
+
+		
 					if(nhanoiTop[i][j] < nhanoiTop[i-1][nhanoiTop[i-1].size() - 1]){
 
 						q.push({nhanoiTop, i, i-1});
@@ -67,9 +73,7 @@ void BFS(){
 						q.push({nhanoiTop, i, i+1});
 					}	
 				}else{
-					if(nhanoiTop[i].size() == 0){
-						continue;
-					}					
+				
 					if(nhanoiTop[i][j] < nhanoiTop[i-2][nhanoiTop[i-2].size() - 1]){
 
 						q.push({nhanoiTop, i, i-2});
@@ -126,8 +130,12 @@ int main(){
 		}
 	}
 	BFS();
-	// for(int i = 0; i<q.size(); i++){
-	// 	// cout << q.front().sticknum << " ";
+	
+	// for(int i = 0; i < 3; i++){
+		
+	// 	cout << q.front().beforesticknum << ", " << q.front().aftersticknum << endl;
+	// 	q.pop();
+		
 	// }
 	return 0;
 }
