@@ -1,8 +1,13 @@
 #include<iostream>
 #include <vector>
+#include <queue>
 
 using namespace std;
-
+struct hanoi {
+	vector<vector<int>> hanoitop;
+	int beforesticknum;
+	int aftersticknum;
+};
 vector< vector<int> > hanoiTop({
     
     vector<int>({2, 1}),
@@ -10,84 +15,67 @@ vector< vector<int> > hanoiTop({
     vector<int>({7, 6, 5, 4}),
     
 });
+queue<hanoi> q;
 int cnt = 0;
-void hanoi(int stick, int diskNum){
-	for(int i=0; i<hanoiTop.size(); i++){
-		for(int j=0; j < hanoiTop[i].size(); j++){
-			cout << hanoiTop[i][j] << " ";
+void BFS(){
+
+
+	while(!q.empty()){
+		vector< vector<int> > nhanoiTop = q.front().hanoitop;
+		int nbeforesticknum = q.front().beforesticknum;
+		int naftersticknum = q.front().aftersticknum;
+		int diskNum = nhanoiTop[nbeforesticknum].back();
+		q.pop();
+		nhanoiTop[nbeforesticknum].pop_back();
+		nhanoiTop[naftersticknum].push_back(diskNum);
+		for(int i=0; i<nhanoiTop.size(); i++){
+			for(int j=0; j<nhanoiTop[i].size(); j++){
+				cout << nhanoiTop[i][j] << " ";
+			}
+			cout << endl;
 		}
 		cout << endl;
-	}	
-	cout << endl;
-	if(stick == 0){
-
-		int secondStick = stick + 1;
-		int secondLastIndex = hanoiTop[secondStick].size() - 1;
-		int thirdStick = stick + 2;
-		int thirdLastIndex = hanoiTop[thirdStick].size() - 1;
-		// stick1 < stick2
-		if(hanoiTop[secondStick][secondLastIndex] > hanoiTop[stick][diskNum]){
-
-			hanoiTop[secondStick].push_back(hanoiTop[stick][diskNum]);	
-			hanoiTop[stick].pop_back();
-			for(int stick=0; stick<hanoiTop.size(); stick++){
-				for(int diskNum=hanoiTop[stick].size() - 1; diskNum <= hanoiTop[stick].size() - 1; diskNum++){
-					if(diskNum == -1){
-						continue;
-					}					
-					hanoi(stick, diskNum);
-
-				}
-
-			}
+		if(nhanoiTop[0].size() == 7 || nhanoiTop[1].size() == 7 || nhanoiTop[2].size() == 7){
+			cout << "end!!" << endl;
+			return;
 		}
-		// stick1 < stick3
-		if(hanoiTop[thirdStick][thirdLastIndex] > hanoiTop[stick][diskNum]){
-			hanoiTop[thirdStick].push_back(hanoiTop[stick][diskNum]);	
-			hanoiTop[stick].pop_back();
-			for(int i=0; i<hanoiTop.size(); i++){
-				for(int j=hanoiTop[i].size() - 1; j <= hanoiTop[i].size() - 1; j++){
-					if(j == -1){
-						continue;
+		for(int i=0; i<nhanoiTop.size(); i++){
+			for(int j=nhanoiTop[i].size() - 1; j <= nhanoiTop[i].size() - 1; j++){
+				
+				if(i == 0){
+					if(nhanoiTop[i][j] < nhanoiTop[i+1][nhanoiTop[i+1].size() - 1]){
+
+						q.push({nhanoiTop, i, i+1});
 					}
-					hanoi(thirdStick, thirdLastIndex);
+					if(nhanoiTop[i][j] < nhanoiTop[i+2][nhanoiTop[i+2].size() - 1]){
 
+						q.push({nhanoiTop, i, i+2});
+					}	
+				}else if(i == 1){
+					if(nhanoiTop[i][j] < nhanoiTop[i-1][nhanoiTop[i-1].size() - 1]){
+
+						q.push({nhanoiTop, i, i-1});
+					}
+					if(nhanoiTop[i][j] < nhanoiTop[i+1][nhanoiTop[i+1].size() - 1]){
+
+						q.push({nhanoiTop, i, i+1});
+					}	
+				}else{
+					if(nhanoiTop[i][j] < nhanoiTop[i-2][nhanoiTop[i-2].size() - 1]){
+
+						q.push({nhanoiTop, i, i-2});
+					}
+					if(nhanoiTop[i][j] < nhanoiTop[i-1][nhanoiTop[i-1].size() - 1]){
+
+						q.push({nhanoiTop, i, i-1});
+					}
 				}
-
-			}			
+			}
 		}
-	}else if(stick == 1){
 
-		int firststick = stick - 1;
-		int firstLastIndex = hanoiTop[firststick].size() - 1;
-		int thirdStick = stick + 1;
-		int thirdLastIndex = hanoiTop[thirdStick].size() - 1;
 
-		// stick1 > stick2
-		if(hanoiTop[firststick][firstLastIndex] > hanoiTop[stick][diskNum]){
 
-			hanoiTop[firststick].push_back(hanoiTop[stick][diskNum]);	
-			hanoiTop[stick].pop_back();
-			for(int stick=0; stick<hanoiTop.size(); stick++){
-				for(int diskNum=hanoiTop[stick].size() - 1; diskNum <= hanoiTop[stick].size() - 1; diskNum++){
-					hanoi(stick, diskNum);
-				}
-			}
-		}		
-		// stick3 > stick2
-		if(hanoiTop[thirdStick][thirdLastIndex] > hanoiTop[stick][diskNum]){
-
-			hanoiTop[thirdStick].push_back(hanoiTop[stick][diskNum]);	
-			hanoiTop[stick].pop_back();
-			for(int stick=0; stick<hanoiTop.size(); stick++){
-				for(int diskNum=hanoiTop[stick].size() - 1; diskNum <= hanoiTop[stick].size() - 1; diskNum++){
-					hanoi(stick, diskNum);
-				}
-			}
-		}				
-
-	}else{
-
+		
 	}
 
 
@@ -97,10 +85,40 @@ int main(){
 	 
 	for(int i=0; i<hanoiTop.size(); i++){
 		for(int j=hanoiTop[i].size() - 1; j <= hanoiTop[i].size() - 1; j++){
-			hanoi(i, j);
-			cout << hanoiTop[i][j] << " ";
+			
+			if(i == 0){
+				if(hanoiTop[i][j] < hanoiTop[i+1][hanoiTop[i+1].size() - 1]){
+
+					q.push({hanoiTop, i, i+1});
+				}
+				if(hanoiTop[i][j] < hanoiTop[i+2][hanoiTop[i+2].size() - 1]){
+
+					q.push({hanoiTop, i, i+2});
+				}	
+			}else if(i == 1){
+				if(hanoiTop[i][j] < hanoiTop[i-1][hanoiTop[i-1].size() - 1]){
+
+					q.push({hanoiTop, i, i-1});
+				}
+				if(hanoiTop[i][j] < hanoiTop[i+1][hanoiTop[i+1].size() - 1]){
+
+					q.push({hanoiTop, i, i+1});
+				}	
+			}else{
+				if(hanoiTop[i][j] < hanoiTop[i-2][hanoiTop[i-2].size() - 1]){
+
+					q.push({hanoiTop, i, i-2});
+				}
+				if(hanoiTop[i][j] < hanoiTop[i-1][hanoiTop[i-1].size() - 1]){
+
+					q.push({hanoiTop, i, i-1});
+				}
+			}
 		}
-		cout << endl;
 	}
+	BFS();
+	// for(int i = 0; i<q.size(); i++){
+	// 	// cout << q.front().sticknum << " ";
+	// }
 	return 0;
 }
