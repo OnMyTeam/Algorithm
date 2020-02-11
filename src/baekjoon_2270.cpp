@@ -17,7 +17,7 @@ vector< vector<int> > hanoiTop({
     
 });
 queue<hanoi> q;
-int cnt = 0;
+
 void BFS(){
 
 	for(int i=0; i<hanoiTop.size(); i++){
@@ -26,29 +26,29 @@ void BFS(){
 			if(i == 0){
 				if(hanoiTop[i][j] < hanoiTop[i+1][hanoiTop[i+1].size() - 1]){
 
-					q.push({hanoiTop, i, i+1});
+					q.push({hanoiTop, i, i+1, 0});
 				}
 				if(hanoiTop[i][j] < hanoiTop[i+2][hanoiTop[i+2].size() - 1]){
 
-					q.push({hanoiTop, i, i+2});
+					q.push({hanoiTop, i, i+2, 0});
 				}	
 			}else if(i == 1){
 				if(hanoiTop[i][j] < hanoiTop[i-1][hanoiTop[i-1].size() - 1]){
 
-					q.push({hanoiTop, i, i-1});
+					q.push({hanoiTop, i, i-1, 0});
 				}
 				if(hanoiTop[i][j] < hanoiTop[i+1][hanoiTop[i+1].size() - 1]){
 
-					q.push({hanoiTop, i, i+1});
+					q.push({hanoiTop, i, i+1, 0});
 				}	
 			}else{
 				if(hanoiTop[i][j] < hanoiTop[i-2][hanoiTop[i-2].size() - 1]){
 
-					q.push({hanoiTop, i, i-2});
+					q.push({hanoiTop, i, i-2, 0});
 				}
 				if(hanoiTop[i][j] < hanoiTop[i-1][hanoiTop[i-1].size() - 1]){
 
-					q.push({hanoiTop, i, i-1});
+					q.push({hanoiTop, i, i-1, 0});
 				}
 			}
 		}
@@ -58,8 +58,9 @@ void BFS(){
 		vector< vector<int> > nhanoiTop = q.front().hanoitop;
 		int nbeforesticknum = q.front().beforesticknum;
 		int naftersticknum = q.front().aftersticknum;
+		int nCnt = q.front().cnt + 1;
 		int diskNum = nhanoiTop[nbeforesticknum].back();
-		// cout << nbeforesticknum << ", " << naftersticknum << ", " << diskNum << endl;
+		
 		q.pop();
 
 
@@ -83,7 +84,8 @@ void BFS(){
 				}
 				cout << endl;
 			}
-			cout << endl;			
+			cout << endl;
+			cout << nCnt << endl;		
 			cout << "end!!" << endl;
 			return;
 		}
@@ -92,26 +94,26 @@ void BFS(){
 				if(i == 0 && nhanoiTop[i].size() != 0){
 					
 					if(nhanoiTop[i+1].size() == 0 || nhanoiTop[i][nhanoiTop[i].size() - 1] < nhanoiTop[i+1][nhanoiTop[i+1].size() - 1] ){
-						q.push({nhanoiTop, i, i+1});
+						q.push({nhanoiTop, i, i+1, nCnt});
 					}
 					if(nhanoiTop[i+2].size() == 0 || nhanoiTop[i][nhanoiTop[i].size() - 1] < nhanoiTop[i+2][nhanoiTop[i+2].size() - 1]){
-						q.push({nhanoiTop, i, i+2});
+						q.push({nhanoiTop, i, i+2, nCnt});
 					}	
 				}else if(i == 1 && nhanoiTop[i].size() != 0){
 
 					if(nhanoiTop[i-1].size() == 0 || nhanoiTop[i][nhanoiTop[i].size() - 1] < nhanoiTop[i-1][nhanoiTop[i-1].size() - 1]){
-						q.push({nhanoiTop, i, i-1});
+						q.push({nhanoiTop, i, i-1, nCnt});
 					}
 					if(nhanoiTop[i+1].size() == 0 || nhanoiTop[i][nhanoiTop[i].size() - 1] < nhanoiTop[i+1][nhanoiTop[i+1].size() - 1]){
-						q.push({nhanoiTop, i, i+1});
+						q.push({nhanoiTop, i, i+1, nCnt});
 					}	
 				}else if(i == 2 && nhanoiTop[i].size() != 0){
 				
 					if(nhanoiTop[i-2].size() == 0 || nhanoiTop[i][nhanoiTop[i].size() - 1] < nhanoiTop[i-2][nhanoiTop[i-2].size() - 1]){
-						q.push({nhanoiTop, i, i-2});
+						q.push({nhanoiTop, i, i-2, nCnt});
 					}
 					if(nhanoiTop[i-1].size() == 0 || nhanoiTop[i][nhanoiTop[i].size() - 1] < nhanoiTop[i-1][nhanoiTop[i-1].size() - 1]){
-						q.push({nhanoiTop, i, i-1});
+						q.push({nhanoiTop, i, i-1, nCnt});
 					}
 				}
 		
