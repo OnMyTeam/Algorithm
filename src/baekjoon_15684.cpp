@@ -5,7 +5,7 @@
 using namespace std;
 
 const int N = 5;
-const int M = 6;
+const int M = 12;
 const int H = 6;
 int stickCnt;
 int ladder[H][N];
@@ -36,10 +36,8 @@ void runLadderDFS(int row, int cnt){
 				break;
 			}
 		}
-
 		if(success){
 			cout << "success!! " << cnt << endl;
-
 			return;
 		}
 	}
@@ -54,7 +52,6 @@ void runLadderDFS(int row, int cnt){
 
 		}
 	}
-	return;
 
 }
 
@@ -64,23 +61,21 @@ int main(void){
 			ladder[i][j] = 0;
 		}
 	}
-	// ladder[0][0] = 1;
-	// ladder[2][1] = 1;
-	// ladder[1][2] = 1;
-	// ladder[4][0] = 1;
-	// ladder[4][3] = 1;
-
-	// ladder[0][0] = 1;
-
 	ladder[0][0] = 1;
+	ladder[1][1] = 1;
+	ladder[2][2] = 1;
+	ladder[3][3] = 1;
 	ladder[2][0] = 1;
-	ladder[4][1] = 1;
-	ladder[3][2] = 1;
-	ladder[1][2] = 1;	
-	ladder[0][3] = 1;	
+	ladder[3][1] = 1;
+	ladder[4][2] = 1;
+	ladder[5][3] = 1;
+
 	for(int i=0; i<=3; i++){
 		stickCnt = i;
 		runLadderDFS(0, 0);
+	}
+	if(!success){
+		cout << "fail!! " << -1 << endl;
 	}
 
 
