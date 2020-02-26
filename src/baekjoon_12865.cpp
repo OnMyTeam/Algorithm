@@ -17,7 +17,7 @@ int main() {
     for (int i = 1; i <= n; i++) {
         cin >> w[i] >> v[i];
     }
- 
+  
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= k; j++) {
             d[i][j] = d[i - 1][j];
