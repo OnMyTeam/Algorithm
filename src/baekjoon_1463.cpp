@@ -35,38 +35,31 @@ int N[100];
 
 // }
 int main() {
-    int inputNum = 99999;
+    int inputNum = 9;
     for(int i=1; i<=inputNum; i++){
 
         if(i == 1){
              N[i] = 0;
-            
         }
         else if(i == 2 && i == 3){
             N[i] = 1;
-
-            
         }
         else{
-            int bb;
-            int b = i - 1;
-            N[i] = 1 + N[b];
-            int aa = N[i];
+            int min2;
+            int min1 = 1 + N[i - 1];
             if(i % 3 == 0){
-                int a = i / 3;
-                N[i] = 1 + N[a];
-                bb = N[i];
+                
+                min2 = 1 + N[i / 3];
+                
             }
             else if(i % 2 == 0){
-                int a = i / 2;
-                N[i] = 1 + N[a];                
-                bb = N[i];
+                min2 = 1 + N[i / 2];
             }
 
-            if( aa >= bb){
-                N[i] = bb;
+            if( min1 >= min2){
+                N[i] = min2;
             }else{
-                N[i] = aa;
+                N[i] = min1;
             }
 
         }
