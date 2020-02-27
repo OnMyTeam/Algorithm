@@ -5,35 +5,6 @@ using namespace std;
 
 int N[100];
 
-// int jaegwi(int n, int cnt){
-//     if(n == 1){
-//         return 0;
-//     }
-//     else if(n == 2 && n == 3){
-//         cout << cnt << endl;
-//         return 1;
-//     }
-//     else{
-
-//         if(n % 3 == 0){
-//             int a = n / 3;
-//             N[n] = cnt + N[a];
-//             jaegwi(a, cnt+1);
-//         }
-//         else if(n % 2 == 0){
-//             int a = n / 3;
-//             N[n] = cnt + N[a];            
-//             jaegwi(a, cnt+1);
-//         }
-//         else{
-//             int a = n - 1;
-//             N[n] = cnt + N[a];            
-//             jaegwi(a, cnt+1);
-//         }
-//     }
-
-
-// }
 int main() {
     int inputNum = 9;
     for(int i=1; i<=inputNum; i++){
