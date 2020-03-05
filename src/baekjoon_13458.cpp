@@ -23,13 +23,11 @@ int main(){
     for(int i=0; i<people.size(); i++){
 
         int iNum = people[i];
-        // cout << iNum << endl;
-        // cout << "--------" << endl;
         iNum = iNum - detect[0];
         minCnt++;
-        // ¸ò
+        // ï¿½ï¿½
         int iA = iNum / detect[1];
-        // ³ª¸ÓÁö
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         int iB = iNum % detect[1];
         
         minCnt = iA;
