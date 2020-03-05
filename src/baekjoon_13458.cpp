@@ -8,11 +8,7 @@ int main(){
     vector<int> people;
     vector<int> detect;
 
-    // people.push_back(10);
-    // people.push_back(9);
-    // people.push_back(10);
-    // people.push_back(9);
-    // people.push_back(10);
+
     for(int i=0; i<1000000; i++){
         people.push_back(1000000);
     }
@@ -25,9 +21,7 @@ int main(){
         int iNum = people[i];
         iNum = iNum - detect[0];
         minCnt++;
-        // ��
         int iA = iNum / detect[1];
-        // ������
         int iB = iNum % detect[1];
         
         minCnt = iA;
