@@ -56,7 +56,7 @@ void DFS(int memberNum, int cnt){
 		DFS(i,cnt + 1);
 		team[i] = 0;
 	}
-
+ 
 }
 int main()
 {
