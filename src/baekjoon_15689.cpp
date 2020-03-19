@@ -19,8 +19,11 @@ void run(int x, int y, int cameranum, int cValue[N][M]) {
                     }
                     cValue[x][j] = 9;
                 }
-                for(int j= x + 1; j<N; j++){
-                    for(int k= y + 1; k<M; k++){
+                for(int j= x; j<N; j++){
+                    for(int k = 0; k<M; k++){
+                        if(cValue[j][k] == cValue[x][y]){
+                            continue;
+                        }
                         if(0 < cValue[j][k] && cValue[j][k] < 6){
                             int cameranum = cValue[j][k];
                             run(j, k, cameranum, cValue);
@@ -35,14 +38,17 @@ void run(int x, int y, int cameranum, int cValue[N][M]) {
                     }                    
                     cValue[j][y] = 9;
                 }
-                for(int j= x + 1; j<N; j++){
-                    for(int k= y + 1; k<M; k++){
+                for(int j= x; j<N; j++){
+                    for(int k = 0; k<M; k++){
+                        if(cValue[j][k] == cValue[x][y]){
+                            continue;
+                        }
                         if(0 < cValue[j][k] && cValue[j][k] < 6){
                             int cameranum = cValue[j][k];
                             run(j, k, cameranum, cValue);
                         }
                     }
-                }                
+                }               
             }else if(i == 3){ // ¼­
                 for(int j= y - 1; j >= 0; j--){
                     if(cValue[x][j] == 9 || cValue[x][j] == 6){
@@ -50,14 +56,17 @@ void run(int x, int y, int cameranum, int cValue[N][M]) {
                     }                        
                     cValue[x][j] = 9;
                 }
-                for(int j= x + 1; j<N; j++){
-                    for(int k= y + 1; k<M; k++){
+                for(int j= x; j<N; j++){
+                    for(int k = 0; k<M; k++){
+                        if(cValue[j][k] == cValue[x][y]){
+                            continue;
+                        }
                         if(0 < cValue[j][k] && cValue[j][k] < 6){
                             int cameranum = cValue[j][k];
                             run(j, k, cameranum, cValue);
                         }
                     }
-                }                
+                }               
             }else if(i == 4){
                 for(int j= x + 1; j < N; j++){
                     if(cValue[x][j] == 9 || cValue[x][j] == 6){
@@ -65,14 +74,17 @@ void run(int x, int y, int cameranum, int cValue[N][M]) {
                     }                       
                     cValue[x][j] = 9;
                 }
-                for(int j= x + 1; j<N; j++){
-                    for(int k= y + 1; k<M; k++){
+                for(int j= x; j<N; j++){
+                    for(int k = 0; k<M; k++){
+                        if(cValue[j][k] == cValue[x][y]){
+                            continue;
+                        }
                         if(0 < cValue[j][k] && cValue[j][k] < 6){
                             int cameranum = cValue[j][k];
                             run(j, k, cameranum, cValue);
                         }
                     }
-                }                
+                }             
             }
         }
     }else if(cameranum == 2){
@@ -93,14 +105,17 @@ void run(int x, int y, int cameranum, int cValue[N][M]) {
                     }                       
                     cValue[x][j] = 9;
                 }
-                for(int j= x + 1; j<N; j++){
-                    for(int k= y + 1; k<M; k++){
+                for(int j= x; j<N; j++){
+                    for(int k = 0; k<M; k++){
+                        if(cValue[j][k] == cValue[x][y]){
+                            continue;
+                        }
                         if(0 < cValue[j][k] && cValue[j][k] < 6){
                             int cameranum = cValue[j][k];
                             run(j, k, cameranum, cValue);
                         }
                     }
-                }                                           
+                }                                          
             }else {
                 //ºÏ
                 for(int j= x - 1; j >= 0; j--){
@@ -116,14 +131,17 @@ void run(int x, int y, int cameranum, int cValue[N][M]) {
                     }                      
                     cValue[x][j] = 9;
                 }
-                for(int j= x + 1; j<N; j++){
-                    for(int k= y + 1; k<M; k++){
+                for(int j= x; j<N; j++){
+                    for(int k = 0; k<M; k++){
+                        if(cValue[j][k] == cValue[x][y]){
+                            continue;
+                        }
                         if(0 < cValue[j][k] && cValue[j][k] < 6){
                             int cameranum = cValue[j][k];
                             run(j, k, cameranum, cValue);
                         }
                     }
-                }                                           
+                }                                         
 
             }
         }
@@ -144,14 +162,17 @@ void run(int x, int y, int cameranum, int cValue[N][M]) {
                     }                    
                     cValue[j][y] = 9;
                 }
-                for(int j= x + 1; j<N; j++){
-                    for(int k= y + 1; k<M; k++){
+                for(int j= x; j<N; j++){
+                    for(int k = 0; k<M; k++){
+                        if(cValue[j][k] == cValue[x][y]){
+                            continue;
+                        }
                         if(0 < cValue[j][k] && cValue[j][k] < 6){
                             int cameranum = cValue[j][k];
                             run(j, k, cameranum, cValue);
                         }
                     }
-                }                  
+                }                
 
             }else if(i == 2){ // ºÏ
                 for(int j= x - 1; j >= 0; j--){
@@ -166,14 +187,17 @@ void run(int x, int y, int cameranum, int cValue[N][M]) {
                     }                        
                     cValue[x][j] = 9;
                 }
-                for(int j= x + 1; j<N; j++){
-                    for(int k= y + 1; k<M; k++){
+                for(int j= x; j<N; j++){
+                    for(int k = 0; k<M; k++){
+                        if(cValue[j][k] == cValue[x][y]){
+                            continue;
+                        }
                         if(0 < cValue[j][k] && cValue[j][k] < 6){
                             int cameranum = cValue[j][k];
                             run(j, k, cameranum, cValue);
                         }
                     }
-                }                                
+                }                             
             }else if(i == 3){ // ¼­
                 for(int j= y - 1; j >= 0; j--){
                     if(cValue[x][j] == 9 || cValue[x][j] == 6){
@@ -187,14 +211,17 @@ void run(int x, int y, int cameranum, int cValue[N][M]) {
                     }                       
                     cValue[x][j] = 9;
                 }
-                for(int j= x + 1; j<N; j++){
-                    for(int k= y + 1; k<M; k++){
+                for(int j= x; j<N; j++){
+                    for(int k = 0; k<M; k++){
+                        if(cValue[j][k] == cValue[x][y]){
+                            continue;
+                        }
                         if(0 < cValue[j][k] && cValue[j][k] < 6){
                             int cameranum = cValue[j][k];
                             run(j, k, cameranum, cValue);
                         }
                     }
-                }                                
+                }                               
             }else if(i == 4){
                 for(int j= x + 1; j < N; j++){
                     if(cValue[x][j] == 9 || cValue[x][j] == 6){
@@ -208,14 +235,17 @@ void run(int x, int y, int cameranum, int cValue[N][M]) {
                     }
                     cValue[x][j] = 9;
                 }
-                for(int j= x + 1; j<N; j++){
-                    for(int k= y + 1; k<M; k++){
+                for(int j= x; j<N; j++){
+                    for(int k = 0; k<M; k++){
+                        if(cValue[j][k] == cValue[x][y]){
+                            continue;
+                        }
                         if(0 < cValue[j][k] && cValue[j][k] < 6){
                             int cameranum = cValue[j][k];
                             run(j, k, cameranum, cValue);
                         }
                     }
-                }                                
+                }                              
             }
         }  
 
@@ -245,14 +275,17 @@ void run(int x, int y, int cameranum, int cValue[N][M]) {
                     }                       
                     cValue[x][j] = 9;
                 }
-                for(int j= x + 1; j<N; j++){
-                    for(int k= y + 1; k<M; k++){
+                for(int j= x; j<N; j++){
+                    for(int k = 0; k<M; k++){
+                        if(cValue[j][k] == cValue[x][y]){
+                            continue;
+                        }
                         if(0 < cValue[j][k] && cValue[j][k] < 6){
                             int cameranum = cValue[j][k];
                             run(j, k, cameranum, cValue);
                         }
                     }
-                }                                      
+                }                                     
 
             }else if(i == 2){ 
                 // ºÏ
@@ -276,8 +309,11 @@ void run(int x, int y, int cameranum, int cValue[N][M]) {
                     }                      
                     cValue[x][j] = 9;
                 }
-                for(int j= x + 1; j<N; j++){
-                    for(int k= y + 1; k<M; k++){
+                for(int j= x; j<N; j++){
+                    for(int k = 0; k<M; k++){
+                        if(cValue[j][k] == cValue[x][y]){
+                            continue;
+                        }
                         if(0 < cValue[j][k] && cValue[j][k] < 6){
                             int cameranum = cValue[j][k];
                             run(j, k, cameranum, cValue);
@@ -307,14 +343,17 @@ void run(int x, int y, int cameranum, int cValue[N][M]) {
                     }
                     cValue[x][j] = 9;
                 }
-                for(int j= x + 1; j<N; j++){
-                    for(int k= y + 1; k<M; k++){
+                for(int j= x; j<N; j++){
+                    for(int k = 0; k<M; k++){
+                        if(cValue[j][k] == cValue[x][y]){
+                            continue;
+                        }
                         if(0 < cValue[j][k] && cValue[j][k] < 6){
                             int cameranum = cValue[j][k];
                             run(j, k, cameranum, cValue);
                         }
                     }
-                }                
+                }            
 
             }else if(i == 4){
                 // ³²
@@ -338,14 +377,17 @@ void run(int x, int y, int cameranum, int cValue[N][M]) {
                     }                    
                     cValue[j][y] = 9;
                 }                            
-                for(int j= x + 1; j<N; j++){
-                    for(int k= y + 1; k<M; k++){
+                for(int j= x; j<N; j++){
+                    for(int k = 0; k<M; k++){
+                        if(cValue[j][k] == cValue[x][y]){
+                            continue;
+                        }
                         if(0 < cValue[j][k] && cValue[j][k] < 6){
                             int cameranum = cValue[j][k];
                             run(j, k, cameranum, cValue);
                         }
                     }
-                }                
+                }               
             }
         }  
     }else {
@@ -377,13 +419,18 @@ void run(int x, int y, int cameranum, int cValue[N][M]) {
             }                        
             cValue[x][j] = 9;
         }
-
+        int zerocnt = 0;
         for(int i=0; i < N; i++){
             for(int j=0; j < M; j++){
+                if(cValue[i][j] == 0){
+                    zerocnt++;
+                }
                 cout << cValue[i][j] << " ";
             }
             cout << endl;
+            
         }
+        cout << zerocnt << endl;
         cout << endl;
     }
 
@@ -401,7 +448,7 @@ int main()
         {0, 0, 0, 0, 0, 0},
         {0, 2, 0, 0, 0, 0},
         {0, 0, 0, 0, 6, 0},
-        {0, 0, 0, 0, 2, 0},
+        {0, 6, 0, 0, 2, 0},
         {0, 0, 0, 0, 0, 0},
         {0, 0, 0, 0, 0, 5},
     };
