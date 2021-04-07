@@ -20,15 +20,15 @@ def my_solution(digits: str) -> []:
     if digits == "":
         return Output
     def DFS(letter, index):
-        if index >= len(digits):
+        if index == len(digits):
             Output.append(letter)
             return
         digit = digits[index]
 
         for phone_letter in phone_letters[digit]:
-            letter = letter + phone_letter
-            DFS(letter, index + 1)
-            letter = letter[:index]
+
+            DFS(letter + phone_letter, index + 1)
+
 
     DFS('', 0)
 
@@ -36,4 +36,4 @@ def my_solution(digits: str) -> []:
     return Output
 if __name__ == '__main__':
 
-    print(my_solution(""))
+    print(my_solution("23"))
