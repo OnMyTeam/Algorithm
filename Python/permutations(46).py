@@ -1,4 +1,4 @@
-## 전화번호문자조합
+## 순열
 
 import itertools
 
