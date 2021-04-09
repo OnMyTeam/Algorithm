@@ -1,5 +1,6 @@
 ## 전화번호문자조합
 
+import itertools
 
 ## 내풀이
 def my_solution(nums: []) -> []:
@@ -19,7 +20,6 @@ def my_solution(nums: []) -> []:
             DFS(result)
             result.pop()
 
-    index = 0
     for num in nums:
         result = []
         result.append(num)
@@ -45,7 +45,11 @@ def solution1(nums: []) -> []:
     DFS(nums)
     return results
 
+# itertools 모듈 사용
+def solution2(nums: []) -> []:
+
+    return list(itertools.permutations(nums))
 if __name__ == '__main__':
 
 
-    print(my_solution([1, 2, 3]))
+    print(solution2([1, 2, 3]))
