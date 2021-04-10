@@ -7,47 +7,25 @@ import itertools
 def my_solution(n: int, k: int) -> []:
     result = []
     prev_elements = []
-    nums = []
 
-    for i in range(0, n):
-        nums.append(i + 1)
-
-    def DFS(elements: []):
+    def DFS(index):
 
         if len(prev_elements) == k:
-            print(elements)
-            result.append(elements[:])
+            result.append(prev_elements[:])
             return
 
-        for e in elements:
-            next_elements = elements[:]
-            next_elements.remove(e)
-            prev_elements.append(e)
-            DFS(next_elements)
+        for e in range(index, n):
+            element = e + 1
+            prev_elements.append(element)
+            DFS(e + 1)
             prev_elements.pop()
 
-    for i, n in enumerate(nums):
-
-        next_nums = nums[i:]
-
-        next_nums.remove(n)
-        # print(next_nums)
-        prev_elements.append(n)
-        print(next_nums)
-        DFS(next_nums)
-        prev_elements.pop()
-
+    DFS(0)
 
     return result
 
 
 if __name__ == '__main__':
-    # a = [1, 2, 3, 4]
-    # a.remove(1)
-    # print(a)
-    # a.remove(2)
-    # print(a)
-    # a.remove(3)
-    # print(a)
+
 
     print(my_solution(4, 2))
