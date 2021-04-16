@@ -25,7 +25,7 @@ def my_solution(nums: [int], k: int) -> [int]:
     return Output
 
 if __name__ == '__main__':
-    nums = [4,1,-1,2,-1,2,3]
+    nums = [4, 1, -1, 2, -1, 2, 3]
     k = 2
 
     print(my_solution(nums, k))
