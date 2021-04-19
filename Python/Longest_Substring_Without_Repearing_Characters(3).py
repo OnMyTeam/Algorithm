@@ -5,50 +5,51 @@ import re, operator, collections
 
 ## 내풀이
 def my_solution(s: str) -> int:
-    if s == "":
-        return 0
-    if s == " " or len(s) == 1:
+    max_length = 0
+    length = 0
+    string = ""
+    used_char = {}
+    if len(''.join(set(s))) == 1:
         return 1
-    substrings = []
-    characters_length_dict = {}
-    prev_char = ''
+    count = 0
 
-    def DFS(str, count):
+    for index, char in enumerate(s):
 
-        if str == "":
-            chars = "".join(substrings)
-            characters_length_dict[chars] = count
-            return
-        next_char = str[0]
-        if next_char in substrings:
+        if char not in string:
+            used_char[char] = index
+            string += char
+            length += 1
+            if count == (len(s) - 1):
 
-            chars = "".join(substrings)
-            characters_length_dict[chars] = count
-            return
-        substrings.append(next_char)
-        next_strings = str[1::]
+                max_length = max(length, max_length)
+        else:
+            print(string)
+            char_index = used_char[char]
+            string = string[(char_index + 1)::] + char
 
-        DFS(next_strings, count + 1)
+            max_length = max(max_length, index - char_index + 1)
 
-    for i, char in enumerate(s):
-        count = 0
-        start_index = i + 1
-        if prev_char == i:
-            continue
-        prev_char = char
-        next_strings = s[start_index::]
-        # print(next_strings)
-        substrings.append(char)
 
-        DFS(next_strings, count + 1)
-        substrings = []
-    return max(characters_length_dict.values())
+        count += 1
 
-def my_solution1(s: str) -> int:
+    return max_length
 
-    pass
+def solution1(s: str) -> int:
+    max_length = start_index = 0
+    used_char = {}
+    for index, char in enumerate(s):
+
+        if char in used_char and start_index <= used_char[char]:
+
+            start_index = used_char[char] + 1
+        else:
+            max_length = max(max_length, index - start_index + 1)
+
+        used_char[char] = index
+    return max_length
 if __name__ == '__main__':
-    s = "pwwkew"
-
+    s = "abcabcbb"
+    s = "aabaab!bb"
+    # s = "dvdf"
     print(my_solution(s))
 
