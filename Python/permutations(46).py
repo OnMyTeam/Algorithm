@@ -5,8 +5,8 @@
 
 def my_solution(nums: []) -> []:
     result_list = []
-    result = []
-    def DFS(result):
+
+    def DFS(result, index):
 
         if len(result) == len(nums):
             result_list.append(result)
@@ -17,18 +17,17 @@ def my_solution(nums: []) -> []:
             if num1 in result:
                 continue
             result.append(num1)
-            DFS(result)
-            result.pop()
+            DFS(result, index + 1)
+            result = result[:index]
 
-
+    index = 0
     for num in nums:
-
+        result = []
         result.append(num)
-        DFS(result)
-
+        DFS(result, index + 1)
 
     return result_list
 if __name__ == '__main__':
 
 
-    print(my_solution([1, 2, 3]))
+    print(my_solution([1, 2, 3, 4]))
