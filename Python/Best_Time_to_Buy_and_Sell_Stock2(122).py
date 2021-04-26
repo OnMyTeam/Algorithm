@@ -40,7 +40,22 @@ def my_solution(prices: List[int]) -> int:
     DFS(0, prices, type, sum_nums)
     return result
 
+def my_solution2(prices: List[int]) -> int:
+    sum_nums = 0
+
+    for i in range(len(prices) - 1):
+        if prices[i] < prices[i + 1]:
+            sum_nums += (prices[i + 1] - prices[i])
+
+
+
+
+
+
+
+    return sum_nums
+
 
 if __name__ == '__main__':
-    prices = [7, 1, 5, 3, 6, 4]
-    print(my_solution(prices))
+    prices = [7,6,4,3,1]
+    print(my_solution2(prices))
