@@ -11,7 +11,7 @@ def my_solution(prices: List[int]) -> int:
 
         if num == len(prices):
             result.append(sum_nums)
-
+            print("result", type, num, sum_nums)
         for i, p in enumerate(prices):
 
             if type == "SELL" and ((sum_nums + p)) >= 0:
