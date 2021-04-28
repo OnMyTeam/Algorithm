@@ -6,37 +6,51 @@ import collections
 ## 내풀이
 def my_solution(tasks: List[str], n: int) -> int:
     result = []
-
+    task_count = collections.Counter(tasks)
 
     run_task_index = collections.defaultdict(int)
+    print(task_count)
     for task in tasks:
         run_task_index[task] = -1
 
     index = 0
-    loop_count = 0
-    while tasks:
-        if loop_count == len(tasks):
-            result.append("Idle")
-            index +=1
-            loop_count = 0
-        task = tasks.pop(0)
 
-        if run_task_index[task] == -1 or (index - run_task_index[task]) > n:
+    while True:
 
-            run_task_index[task] = index
-            result.append(task)
+        loop_count = 0
+        for k, v in task_count.items():
+
+
+            if run_task_index[k] == -1 or (index - run_task_index[k]) > n:
+
+                run_task_index[k] = index
+                result.append(k)
+                tasks.remove(k)
+
+                index += 1
+                task_count[k] -= 1
+                print(task_count)
+                loop_count = 0
+                if task_count[k] == 0:
+                    del task_count[k]
+                break
+            else:
+                loop_count += 1
+
+
+        if len(tasks) == 0:
+            print(result)
+            return len(result)
+
+        if loop_count == len(task_count):
+            result.append("idle")
             index += 1
-            loop_count = 0
 
-        else:
-            loop_count += 1
-            tasks.append(task)
-            print(tasks)
-    print(result)
-    return result
+
+
 
 
 if __name__ == '__main__':
-    tasks = ["A","A","A","A","A","A","B","C","D","E","F","G"]
+    tasks = ["A","A","A","B","B","B", "C","C","C", "D", "D", "E"]
     n = 2
     print(my_solution(tasks, n))
