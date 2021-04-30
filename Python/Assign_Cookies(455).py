@@ -33,7 +33,35 @@ def my_solution(g: List[int], s: List[int]) -> int:
 
     return result
 
+def my_solution2(g: List[int], s: List[int]) -> int:
+    if not s:
+        max_size = 0
+    else:
+        max_size = max(s)
 
+    greed = []
+    for i, c_g in enumerate(g):
+
+        if c_g <= max_size:
+            greed.append(c_g)
+
+    s.sort(reverse=True)
+    greed.sort(reverse=True)
+
+    result = 0
+    while greed:
+
+        greed_size = greed.pop()
+
+        while s:
+            cookie_size = s.pop()
+            if cookie_size >= greed_size:
+                result += 1
+
+                break
+
+
+    return result
 #  그리디 알고리즘
 def solution1(g: List[int], s: List[int]) -> int:
     g.sort()
