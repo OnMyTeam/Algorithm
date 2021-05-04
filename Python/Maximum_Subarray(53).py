@@ -29,7 +29,3 @@ def solution1(nums: List[int]) -> int:
             nums[i] += nums[i-1]
 
     return max(nums)
-if __name__ == '__main__':
-    nums = [-2,1,-3,4,-1,2,1,-5,4]
-    print(my_solution(nums))
-    print(solution1(nums))
