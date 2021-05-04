@@ -1,5 +1,5 @@
 ## 문자열 뒤집기
-
+from typing import *
 
 ## 내풀이
 def my_solution(s: []) -> None:
@@ -12,6 +12,17 @@ def my_solution(s: []) -> None:
         s[len(s) - 1 - i] = first_word
         s_length = s_length - 2
         i = i + 1
+
+def my_solution2(s: List[str]) -> None:
+
+    for i in range(int(len(s)/2)):
+        first_char = s[i]
+        second_char = s[len(s) - i - 1]
+        s[i] = second_char
+        s[len(s) - i - 1] = first_char
+
+
+
 
 ## 투 포인터를 이용한 스왑
 def solution1(s: []) -> None:
@@ -32,4 +43,4 @@ def solution2(s: []) -> None:
 
 
 if __name__ == '__main__':
-    solution1(["H", "a", "n", "n", "a", "h"])
+    print(my_solution2(["H", "a", "n", "n", "a", "h"]))
