@@ -1,5 +1,6 @@
 ## 유효한 팰린드롬
 import collections, re
+from typing import *
 ## 내풀이
 def my_solution(s: str) -> bool:
 
@@ -17,7 +18,19 @@ def my_solution(s: str) -> bool:
     else:
         return False
 
+## 내풀이
+def my_solution2(s: str) -> bool:
+    strs = []
+    for char in s:
+        if char.isalnum():
+            strs.append(char.lower())
+    print(strs)
+    for i in range(int(len(strs)/2)):
+        if strs[i] != strs[len(strs) -i - 1]:
 
+            return False
+
+    return True
 ## 풀이1 리스트로 변환
 def solution1(input):
 
@@ -54,4 +67,4 @@ def solution3(s: str) -> bool:
 
     return s == s[::-1]
 if __name__ == '__main__':
-    print(my_solution("A man, a plan, a canal: Panama"))
+    print(my_solution2("A man, a plan, a canal: Panama"))
