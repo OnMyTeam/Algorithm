@@ -23,7 +23,13 @@ def my_solution(nums: List[int]) -> int:
     return max_num
 
 
+def solution1(nums: List[int]) -> int:
+    for i in range(1, len(nums)):
+        if nums[i-1] > 0:
+            nums[i] += nums[i-1]
 
+    return max(nums)
 if __name__ == '__main__':
-    nums = [5,4,-1,7,8]
+    nums = [-2,1,-3,4,-1,2,1,-5,4]
     print(my_solution(nums))
+    print(solution1(nums))
