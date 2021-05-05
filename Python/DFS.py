@@ -1,5 +1,5 @@
-## 유효한 팰린드롬
-import collections, re
+## DFS 기본
+from typing import *
 ## 내풀이
 
 
@@ -11,9 +11,19 @@ def DFS(v, discovered = []) -> []:
             discovered = DFS(i, discovered)
     return discovered
 
+def my_solution1(graph: {List}) -> List:
+    discovered = []
 
+    def DFS(num):
+        if num in discovered:
+            return
 
+        discovered.append(num)
+        for i in graph[num]:
+            DFS(i)
 
+    DFS(1)
+    return discovered
 if __name__ == '__main__':
     graph = {
         1: [2, 3, 4],
@@ -25,4 +35,4 @@ if __name__ == '__main__':
         7: [3]
     }
 
-    print(DFS(1))
+    print(my_solution1(graph))
