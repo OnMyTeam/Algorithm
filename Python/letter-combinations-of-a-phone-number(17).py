@@ -36,7 +36,7 @@ def my_solution(digits: str) -> []:
     return Output
 
 def my_solution2(digits: str) -> List[str]:
-
+    result = []
     phone_letters = {
         "2": "abc",
         "3": "def",
@@ -47,25 +47,26 @@ def my_solution2(digits: str) -> List[str]:
         "8": "tuv",
         "9": "wxyz",
     }
-
-    Output = []
-    if digits == "":
-        return Output
-    def DFS(letter, index):
+    if digits.strip() == "":
+        return result
+    def DFS(str, index):
         if index == len(digits):
-            Output.append(letter)
+
+            result.append(str)
             return
-        digit = digits[index]
 
-        for phone_letter in phone_letters[digit]:
 
-            DFS(letter + phone_letter, index + 1)
+
+        for letter in phone_letters[digits[index]]:
+
+            DFS(str + letter, index + 1)
 
 
     DFS('', 0)
 
 
-    return Output
+    return result
 if __name__ == '__main__':
-    digits = "23"
-    print(my_solution(digits))
+    digits = " "
+    # print(len(digits))
+    print(my_solution2(digits))
