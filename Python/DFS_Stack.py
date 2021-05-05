@@ -1,5 +1,5 @@
-## 유효한 팰린드롬
-import collections, re
+## DFS 기본 스택
+from typing import *
 ## 내풀이
 
 
@@ -21,6 +21,19 @@ def DFSiterative(v) -> []:
     return discovered
 
 
+def my_solution1(graph: List[List]) -> List:
+    result = []
+    route = []
+    route.append(1)
+
+    while route:
+
+        r = route.pop()
+        if r not in result:
+            result.append(r)
+            for i in graph[r]:
+                route.append(i)
+    return result
 if __name__ == '__main__':
     graph = {
         1: [2, 3, 4],
@@ -32,4 +45,4 @@ if __name__ == '__main__':
         7: [3]
     }
 
-    print(DFSiterative(1))
+    print(my_solution1(graph))
