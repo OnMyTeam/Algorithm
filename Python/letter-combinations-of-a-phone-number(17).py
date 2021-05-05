@@ -1,5 +1,5 @@
 ## 전화번호문자조합
-
+from typing import *
 
 ## 내풀이
 
@@ -34,6 +34,38 @@ def my_solution(digits: str) -> []:
 
 
     return Output
-if __name__ == '__main__':
 
-    print(my_solution("23"))
+def my_solution2(digits: str) -> List[str]:
+
+    phone_letters = {
+        "2": "abc",
+        "3": "def",
+        "4": "ghi",
+        "5": "jkl",
+        "6": "mno",
+        "7": "pqrs",
+        "8": "tuv",
+        "9": "wxyz",
+    }
+
+    Output = []
+    if digits == "":
+        return Output
+    def DFS(letter, index):
+        if index == len(digits):
+            Output.append(letter)
+            return
+        digit = digits[index]
+
+        for phone_letter in phone_letters[digit]:
+
+            DFS(letter + phone_letter, index + 1)
+
+
+    DFS('', 0)
+
+
+    return Output
+if __name__ == '__main__':
+    digits = "23"
+    print(my_solution(digits))
