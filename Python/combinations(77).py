@@ -1,6 +1,6 @@
 ## 조합
+from typing import *
 
-import itertools
 
 
 ## 내풀이
@@ -24,8 +24,25 @@ def my_solution(n: int, k: int) -> []:
 
     return result
 
+def my_solution2(n: int, k: int) -> List[List[int]]:
+    result_list = []
+    result = []
 
+
+    def DFS(index):
+        if len(result) == k:
+            result_list.append(result[:])
+            return
+
+        for i in range(index, n):
+            result.append(i+1)
+            DFS(i + 1)
+            result.pop()
+
+    DFS(0)
+    return result_list
 if __name__ == '__main__':
+    n = 1
+    k = 1
 
-
-    print(my_solution(4, 2))
+    print(my_solution2(n, k))
